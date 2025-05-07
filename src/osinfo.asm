@@ -5,6 +5,11 @@ PUBLIC OSMinorVersion
 PUBLIC OSBuildNumber
 PUBLIC ProcessId
 PUBLIC NtGlobalFlag
+PUBLIC OSCSDVersion
+PUBLIC OSPlatformId
+PUBLIC ImageSubsystem
+PUBLIC ImageSubsystemMajorVersion
+PUBLIC ImageSubsystemMinorVersion
 PUBLIC fail_return_zero
 
 .code
@@ -53,6 +58,51 @@ PUBLIC fail_return_zero
         jz      fail_return_zero
         ret
     OSBuildNumber ENDP
+    OSCSDVersion PROC
+        mov     rax,     qword ptr gs:[60h]
+        test    rax,     rax
+        jz      fail_return_zero
+        mov     rax,     [rax + 122h]
+        test    rax,     rax
+        jz      fail_return_zero
+        ret
+    OSCSDVersion ENDP
+    OSPlatformId PROC
+        mov     rax,     qword ptr gs:[60h]
+        test    rax,     rax
+        jz      fail_return_zero
+        mov     rax,     [rax + 124h]
+        test    rax,     rax
+        jz      fail_return_zero
+        ret
+    OSPlatformId ENDP
+    ImageSubsystem PROC
+        mov     rax,     qword ptr gs:[60h]
+        test    rax,     rax
+        jz      fail_return_zero
+        mov     rax,     [rax + 128h]
+        test    rax,     rax
+        jz      fail_return_zero
+        ret
+    ImageSubsystem ENDP
+    ImageSubsystemMajorVersion PROC
+        mov     rax,     qword ptr gs:[60h]
+        test    rax,     rax
+        jz      fail_return_zero
+        mov     rax,     [rax + 12Ch]
+        test    rax,     rax
+        jz      fail_return_zero
+        ret
+    ImageSubsystemMajorVersion ENDP
+    ImageSubsystemMinorVersion PROC
+        mov     rax,     qword ptr gs:[60h]
+        test    rax,     rax
+        jz      fail_return_zero
+        mov     rax,     [rax + 130h]
+        test    rax,     rax
+        jz      fail_return_zero
+        ret
+    ImageSubsystemMinorVersion ENDP
     ProcessId PROC
         mov     rax,     qword ptr gs:[40h]
         test    rax,     rax
