@@ -10,5 +10,5 @@ if( WIN32 )
         src/osinfo.asm
     )
 
-    add_executable( native ${SOURCE_FILES} )
+    add_executable( native-peb ${SOURCE_FILES} )
 endif()
