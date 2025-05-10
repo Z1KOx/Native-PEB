@@ -1,12 +1,14 @@
-﻿cmake_minimum_required(VERSION 3.8)
-project(haha)
+﻿cmake_minimum_required( VERSION 3.10 )
+project( native-peb )
 
-enable_language(C ASM_MASM)
-set(CMAKE_CXX_STANDARD 20)
+if( WIN32 )
+	enable_language( C ASM_MASM )
+    set( CMAKE_C_STANDARD 99 )
 
-set(SOURCE_FILES
-    src/main.cpp
-    src/osinfo.asm
-)
+    set( SOURCE_FILES
+        src/main.c
+        src/osinfo.asm
+    )
 
-add_executable(haha ${SOURCE_FILES})
+    add_executable( native ${SOURCE_FILES} )
+endif()
